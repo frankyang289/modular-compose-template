@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 @file:OptIn(ExperimentalRoborazziApi::class)
-package com.heavywater.template.corescreenshot_testing
 
+package com.heavywater.template.screenshot_test
+
+import androidx.compose.ui.test.DeviceConfigurationOverride
 import android.graphics.Bitmap.CompressFormat.PNG
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -94,8 +96,8 @@ fun <A : ComponentActivity> AndroidComposeTestRule<ActivityScenarioRule<A>, A>.c
         CompositionLocalProvider(
             LocalInspectionMode provides true,
         ) {
-            androidx.compose.ui.test.DeviceConfigurationOverride(
-                override = androidx.compose.ui.test.DeviceConfigurationOverride.Companion.DarkMode(
+            DeviceConfigurationOverride(
+                override = DeviceConfigurationOverride.Companion.DarkMode(
                     darkMode
                 ),
             ) {
