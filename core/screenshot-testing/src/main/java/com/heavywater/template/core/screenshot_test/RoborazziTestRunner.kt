@@ -15,7 +15,7 @@
  */
 @file:OptIn(ExperimentalRoborazziApi::class)
 
-package com.heavywater.template.screenshot_test
+package com.heavywater.template.core.screenshot_test
 
 import androidx.compose.ui.test.DeviceConfigurationOverride
 import android.graphics.Bitmap.CompressFormat.PNG
