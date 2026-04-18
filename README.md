@@ -12,6 +12,7 @@ A production-ready Android application template demonstrating best practices for
 - **Hilt** for dependency injection throughout
 - **Material 3** design system with light/dark/dynamic theming
 - **Proto DataStore** for persistent user preferences
+- **Retrofit** with Kotlin Serialization converter for type-safe HTTP networking
 - **Room** database infrastructure
 - **Location permissions** with runtime rationale dialogs
 - **Screenshot regression testing** via Roborazzi
@@ -73,6 +74,7 @@ Feature modules are fully decoupled from one another and communicate only throug
 | DI | Hilt |
 | Async | Kotlin Coroutines |
 | Storage | Room, Proto DataStore |
+| Networking | Retrofit, OkHttp |
 | Serialization | Kotlin Serialization, Wire |
 | Image Loading | Coil |
 | Location | Google Play Services Location |
