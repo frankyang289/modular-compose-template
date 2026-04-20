@@ -1,3 +1,7 @@
+import groovy.lang.MissingPropertyException
+import java.util.Properties
+import kotlin.apply
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.hilt)
@@ -12,10 +16,25 @@ android {
         }
     }
 
+    val localPropertiesFile = rootProject.file("local.properties")
+    val properties = Properties().apply {
+        load(localPropertiesFile.inputStream())
+    }
+
+    fun Properties.getPropOrWarn(name: String): String {
+        val prop = getProperty(name, "")
+        if (prop.isNullOrEmpty()) throw MissingPropertyException("$name missing in local.properties")
+        return prop
+    }
+
+    val apiKey = properties.getPropOrWarn("API_KEY")
+
+    buildFeatures { buildConfig = true }
+
     defaultConfig {
         minSdk = 26
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
     }
 
     buildTypes {
@@ -36,6 +55,7 @@ android {
 dependencies {
     api(projects.core.model)
     api(projects.core.datastore)
+    api(projects.core.network)
     implementation(libs.hilt.android)
     implementation(libs.play.services.location)
     ksp(libs.hilt.compiler)

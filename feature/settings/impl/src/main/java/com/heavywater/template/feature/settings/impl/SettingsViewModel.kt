@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.heavywater.template.core.model.DarkThemeConfig
 import com.heavywater.template.core.model.UserData
-import com.heavywater.data.repository.UserDataRepository
+import com.heavywater.template.core.data.repository.UserDataRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

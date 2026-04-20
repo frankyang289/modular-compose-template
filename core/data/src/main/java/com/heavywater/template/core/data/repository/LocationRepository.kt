@@ -1,4 +1,4 @@
-package com.heavywater.data.repository
+package com.heavywater.template.core.data.repository
 
 import android.Manifest
 import android.content.Context

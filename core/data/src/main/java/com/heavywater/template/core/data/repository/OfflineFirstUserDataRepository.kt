@@ -1,4 +1,4 @@
-package com.heavywater.data.repository
+package com.heavywater.template.core.data.repository
 
 import com.heavywater.template.core.model.DarkThemeConfig
 import com.heavywater.template.core.model.UserData
