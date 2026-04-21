@@ -1,8 +1,7 @@
-package com.heavywater.core.datastore
+package com.heavywater.template.core.datastore
 
 import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.Serializer
-import com.heavywater.template.core.datastore.UserPreferences
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream

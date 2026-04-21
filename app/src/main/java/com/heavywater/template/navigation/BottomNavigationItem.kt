@@ -3,7 +3,7 @@ package com.heavywater.template.navigation
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.heavywater.template.feature.currentweather.api.CurrentWeatherNavKey
-import com.heavywater.core.designsystem.icon.AppIcons
+import com.heavywater.template.core.designsystem.icon.AppIcons
 import com.heavywater.template.feature.currentweather.api.R as currentWeatherR
 
 

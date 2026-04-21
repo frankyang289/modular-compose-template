@@ -1,4 +1,4 @@
-package com.heavywater.core.designsystem.theme
+package com.heavywater.template.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

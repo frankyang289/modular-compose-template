@@ -1,4 +1,4 @@
-package com.heavywater.core.designsystem.component
+package com.heavywater.template.core.designsystem.component
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon
@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.heavywater.core.designsystem.icon.AppIcons
+import com.heavywater.template.core.designsystem.icon.AppIcons
 
 @Composable
 fun RowScope.AppNavigationBarItem(

@@ -1,4 +1,4 @@
-package com.heavywater.data.di
+package com.heavywater.template.core.data.di
 
 import com.heavywater.template.core.data.repository.OfflineFirstUserDataRepository
 import com.heavywater.template.core.data.repository.UserDataRepository

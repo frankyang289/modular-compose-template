@@ -18,8 +18,8 @@ import androidx.navigation3.runtime.NavKey
 import com.heavywater.template.feature.currentweather.api.CurrentWeatherNavKey
 import com.heavywater.template.feature.currentweather.impl.CurrentWeatherScreen
 import com.heavywater.template.navigation.BOTTOM_NAV_ITEMS
-import com.heavywater.core.designsystem.component.AppNavigationBar
-import com.heavywater.core.designsystem.component.AppNavigationBarItem
+import com.heavywater.template.core.designsystem.component.AppNavigationBar
+import com.heavywater.template.core.designsystem.component.AppNavigationBarItem
 
 @Composable
 fun TemplateApp() {

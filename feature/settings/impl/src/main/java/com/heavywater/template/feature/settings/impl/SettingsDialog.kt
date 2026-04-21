@@ -26,7 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.heavywater.template.core.model.DarkThemeConfig
 import com.heavywater.template.core.model.UserData
-import com.heavywater.core.designsystem.theme.supportsDynamicTheming
+import com.heavywater.template.core.designsystem.theme.supportsDynamicTheming
 
 @Composable
 fun SettingsDialog(

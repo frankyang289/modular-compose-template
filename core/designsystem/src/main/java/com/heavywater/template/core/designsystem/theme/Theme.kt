@@ -1,4 +1,4 @@
-package com.heavywater.core.designsystem.theme
+package com.heavywater.template.core.designsystem.theme
 
 import android.os.Build
 import androidx.annotation.ChecksSdkIntAtLeast

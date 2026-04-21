@@ -1,10 +1,9 @@
-package com.heavywater.core.datastore
+package com.heavywater.template.core.datastore
 
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.DataStoreFactory
 import androidx.datastore.dataStoreFile
-import com.heavywater.template.core.datastore.UserPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

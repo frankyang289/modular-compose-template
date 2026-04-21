@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.heavywater.template.ui.TemplateApp
 import com.heavywater.template.util.isSystemInDarkTheme
-import com.heavywater.core.designsystem.theme.AppTheme
+import com.heavywater.template.core.designsystem.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

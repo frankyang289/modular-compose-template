@@ -1,8 +1,6 @@
-package com.heavywater.core.datastore
+package com.heavywater.template.core.datastore
 
 import androidx.datastore.core.DataStore
-import com.heavywater.template.core.datastore.DarkThemeConfigProto
-import com.heavywater.template.core.datastore.UserPreferences
 import com.heavywater.template.core.model.DarkThemeConfig
 import com.heavywater.template.core.model.UserData
 import kotlinx.coroutines.flow.map

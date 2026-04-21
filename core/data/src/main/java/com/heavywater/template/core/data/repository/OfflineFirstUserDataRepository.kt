@@ -2,7 +2,7 @@ package com.heavywater.template.core.data.repository
 
 import com.heavywater.template.core.model.DarkThemeConfig
 import com.heavywater.template.core.model.UserData
-import com.heavywater.core.datastore.YourApplicationPreferencesDataSource
+import com.heavywater.template.core.datastore.YourApplicationPreferencesDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

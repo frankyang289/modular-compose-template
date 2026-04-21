@@ -6,9 +6,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.heavywater.core.designsystem.component.AppNavigationBar
-import com.heavywater.core.designsystem.component.AppNavigationBarItem
-import com.heavywater.core.designsystem.icon.AppIcons
+import com.heavywater.template.core.designsystem.component.AppNavigationBar
+import com.heavywater.template.core.designsystem.component.AppNavigationBarItem
+import com.heavywater.template.core.designsystem.icon.AppIcons
 import com.heavywater.template.core.screenshot_test.captureMultiTheme
 import org.junit.Rule
 import org.junit.Test

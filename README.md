@@ -184,6 +184,109 @@ To customize the app for your own project, update:
 
 ---
 
+## Adding a New API Service
+
+The networking layer lives in `core:network`. A single `Retrofit` instance and `OkHttpClient` are provided by Hilt via `NetworkModule` — every API service you add shares them automatically.
+
+### Step 1 — Define the interface
+
+Create a new file in `core/network/src/main/java/com/heavywater/template/core/network/`, one interface per domain area:
+
+```kotlin
+// core/network/.../ForecastApiService.kt
+interface ForecastApiService {
+    @GET("forecast.json")
+    suspend fun getForecast(
+        @Query("key") apiKey: String,
+        @Query("q") query: String,
+        @Query("days") days: Int = 3,
+    ): ForecastResponse
+}
+
+@Serializable
+data class ForecastResponse(
+    val location: LocationDto,
+    val forecast: ForecastDto,
+)
+// ... additional DTOs
+```
+
+Use `@SerialName` on any field where the JSON key differs from your Kotlin property name.
+
+### Step 2 — Provide it via Hilt
+
+Add a `@Provides` function to `NetworkModule` in `core/network/src/main/java/.../di/NetworkModule.kt`:
+
+```kotlin
+@Provides
+@Singleton
+fun provideForecastApiService(retrofit: Retrofit): ForecastApiService =
+    retrofit.create(ForecastApiService::class.java)
+```
+
+### Step 3 — Create a repository
+
+Add an interface and implementation in `core/data/src/main/java/.../repository/`:
+
+```kotlin
+interface ForecastRepository {
+    suspend fun getForecast(query: String): Result<ForecastInfo>
+}
+
+class ForecastRepositoryImpl @Inject constructor(
+    private val forecastApiService: ForecastApiService,
+) : ForecastRepository {
+    override suspend fun getForecast(query: String): Result<ForecastInfo> =
+        runCatching {
+            val response = forecastApiService.getForecast(apiKey = API_KEY, query = query)
+            // map response to your domain model (ForecastInfo in core:model)
+        }
+}
+```
+
+Then bind the interface to the implementation in `DataModule`:
+
+```kotlin
+@Binds
+abstract fun bindsForecastRepository(impl: ForecastRepositoryImpl): ForecastRepository
+```
+
+### Step 4 — Consume in a ViewModel
+
+```kotlin
+@HiltViewModel
+class ForecastViewModel @Inject constructor(
+    private val forecastRepository: ForecastRepository,
+) : ViewModel() {
+    private val _forecast = MutableStateFlow<ForecastInfo?>(null)
+    val forecast: StateFlow<ForecastInfo?> = _forecast.asStateFlow()
+
+    fun loadForecast(query: String) {
+        viewModelScope.launch {
+            forecastRepository.getForecast(query).fold(
+                onSuccess = { _forecast.value = it },
+                onFailure = { /* handle error */ },
+            )
+        }
+    }
+}
+```
+
+### Where each piece lives
+
+| What | Where |
+|---|---|
+| Retrofit interface + DTOs | `core/network/src/.../YourApiService.kt` |
+| Hilt provider | `core/network/src/.../di/NetworkModule.kt` |
+| Domain model | `core/model/src/.../YourInfo.kt` |
+| Repository interface + impl | `core/data/src/.../repository/` |
+| Hilt binding | `core/data/src/.../di/DataModule.kt` |
+| ViewModel + Screen | `feature/yourfeature/impl/src/...` |
+
+The base URL and OkHttp configuration (logging, auth headers, timeouts) are set once in `NetworkModule` and inherited by all services automatically.
+
+---
+
 ## Adding a New Feature
 
 1. Create a new Gradle module under `/feature` (e.g., `feature:myfeature:api` and `feature:myfeature:impl`).
