@@ -47,7 +47,7 @@ data class CurrentDto(
     @SerialName("temp_f") val tempFahrenheit: Double,
     @SerialName("feelslike_c") val feelsLikeCelsius: Double,
     @SerialName("feelslike_f") val feelsLikeFahrenheit: Double,
-    @SerialName("is_day") val isDay: Int, // 1 = day, 0 = night
+    @SerialName("is_day") val isDay: Int,
     val condition: ConditionDto,
     @SerialName("wind_kph") val windKph: Double,
     @SerialName("wind_dir") val windDirection: String,
@@ -58,7 +58,7 @@ data class CurrentDto(
 
 @Serializable
 data class ConditionDto(
-    val text: String, // e.g. "Partly cloudy"
-    val icon: String, // URL fragment, prefix with "https:" to load
+    val text: String,
+    val icon: String,
     val code: Int,
 )
