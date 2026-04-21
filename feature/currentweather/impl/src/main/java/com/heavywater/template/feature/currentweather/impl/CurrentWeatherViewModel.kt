@@ -3,7 +3,7 @@ package com.heavywater.template.feature.currentweather.impl
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.heavywater.template.core.data.repository.LocationRepository
-import com.heavywater.template.core.data.repository.WeatherInfo
+import com.heavywater.template.core.model.WeatherInfo
 import com.heavywater.template.core.data.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,10 +49,9 @@ class CurrentWeatherViewModel @Inject constructor(
     }
 
     private suspend fun fetchWeather(query: String) {
-        try {
-            _weather.value = weatherRepository.getCurrentWeather(query)
-        } catch (e: Exception) {
-            _error.value = "Weather unavailable: ${e.message}"
-        }
+        weatherRepository.getCurrentWeather(query).fold(
+            onSuccess = { _weather.value = it },
+            onFailure = { _error.value = "Weather unavailable: ${it.message}" },
+        )
     }
 }

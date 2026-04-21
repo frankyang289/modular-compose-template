@@ -34,7 +34,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.heavywater.core.designsystem.icon.AppIcons
-import com.heavywater.template.core.data.repository.WeatherInfo
+import com.heavywater.template.core.model.WeatherInfo
 import com.heavywater.template.core.ui.FullScreenLoader
 import com.heavywater.template.feature.settings.impl.SettingsDialog
 
